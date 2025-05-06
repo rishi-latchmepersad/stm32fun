@@ -1,0 +1,16 @@
+/*
+ * main.c
+ *
+ *  Created on: May 4, 2025
+ *      Author: rishi_latchmepersad
+ */
+
+
+#include "stm32f7xx_hal.h"
+
+int main(void){
+	// run an infinite loop
+	while(1){
+
+	}
+}

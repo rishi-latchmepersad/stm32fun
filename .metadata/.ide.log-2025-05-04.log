@@ -1,0 +1,45 @@
+2025-05-04 19:49:45,499 [INFO] WebApp:194 - Connection lost
+2025-05-04 19:49:46,335 [INFO] WebApp:191 - Connection restablished
+2025-05-04 19:49:46,369 [INFO] WebApp:194 - Connection lost
+2025-05-04 19:49:46,544 [INFO] WebApp:191 - Connection restablished
+2025-05-04 19:49:47,113 [INFO] WebApp:194 - Connection lost
+2025-05-04 19:49:47,448 [INFO] WebApp:191 - Connection restablished
+2025-05-04 19:49:48,006 [INFO] WebApp:194 - Connection lost
+2025-05-04 19:49:48,192 [INFO] WebApp:191 - Connection restablished
+2025-05-04 19:49:51,651 [INFO] WebApp:194 - Connection lost
+2025-05-04 19:49:51,809 [INFO] WebApp:191 - Connection restablished
+2025-05-04 19:51:01,130 [INFO] WebApp:194 - Connection lost
+2025-05-04 19:51:01,709 [INFO] WebApp:191 - Connection restablished
+2025-05-04 19:51:28,899 [INFO] Gpio:277 - dependency for GPIO [SYS]
+2025-05-04 19:51:32,647 [INFO] WebApp:194 - Connection lost
+2025-05-04 19:51:32,843 [INFO] WebApp:191 - Connection restablished
+2025-05-04 19:54:12,841 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 605607712 Bytes (1030750208)
+2025-05-04 19:54:37,396 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 700350752 Bytes (1030750208)
+2025-05-04 19:54:38,166 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: SYS
+2025-05-04 19:54:38,166 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: RCC
+2025-05-04 19:54:38,167 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: NVIC
+2025-05-04 19:54:38,168 [INFO] CodeGenerator:882 - code generatio: config db path: C:\ST\STM32CubeIDE_1.18.1\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.14.1.202504091515\\db\
+2025-05-04 19:54:38,347 [INFO] CodeEngine:263 - oldGeneratedFile, D:\Projects\stm32fun\f767zi_led_blink\MXTmpFiles\license.tmp_save
+2025-05-04 19:54:38,694 [INFO] CodeEngine:287 - Generated code: D:\Projects\stm32fun\f767zi_led_blink\MXTmpFiles\license.tmp
+2025-05-04 19:54:38,718 [INFO] CodeEngine:263 - oldGeneratedFile, D:\Projects\stm32fun\f767zi_led_blink\MXTmpFiles\cortex.tmp_save
+2025-05-04 19:54:38,890 [INFO] CodeEngine:287 - Generated code: D:\Projects\stm32fun\f767zi_led_blink\MXTmpFiles\cortex.tmp
+2025-05-04 19:54:38,903 [INFO] CodeEngine:263 - oldGeneratedFile, D:\Projects\stm32fun\f767zi_led_blink\Core\Src\stm32f7xx_it.c_save
+2025-05-04 19:54:39,372 [INFO] CodeEngine:287 - Generated code: D:\Projects\stm32fun\f767zi_led_blink\Core\Src\stm32f7xx_it.c
+2025-05-04 19:54:39,379 [INFO] CodeEngine:263 - oldGeneratedFile, D:\Projects\stm32fun\f767zi_led_blink\Core\Inc\stm32f7xx_it.h_save
+2025-05-04 19:54:39,481 [INFO] CodeEngine:287 - Generated code: D:\Projects\stm32fun\f767zi_led_blink\Core\Inc\stm32f7xx_it.h
+2025-05-04 19:54:39,497 [INFO] CodeEngine:263 - oldGeneratedFile, D:\Projects\stm32fun\f767zi_led_blink\Core\Src\stm32f7xx_hal_msp.c_save
+2025-05-04 19:54:39,636 [INFO] CodeEngine:287 - Generated code: D:\Projects\stm32fun\f767zi_led_blink\Core\Src\stm32f7xx_hal_msp.c
+2025-05-04 19:54:39,640 [INFO] CodeEngine:263 - oldGeneratedFile, D:\Projects\stm32fun\f767zi_led_blink\MXTmpFiles\system.tmp_save
+2025-05-04 19:54:39,728 [INFO] CodeEngine:287 - Generated code: D:\Projects\stm32fun\f767zi_led_blink\MXTmpFiles\system.tmp
+2025-05-04 19:54:39,740 [INFO] CodeEngine:319 - oldGeneratedFile, D:\Projects\stm32fun\f767zi_led_blink\Core\Inc\stm32f7xx_hal_conf.h_save
+2025-05-04 19:54:39,844 [INFO] CodeEngine:343 - Generated code: D:\Projects\stm32fun\f767zi_led_blink\Core\Inc\stm32f7xx_hal_conf.h
+2025-05-04 19:54:39,876 [INFO] CodeEngine:263 - oldGeneratedFile, D:\Projects\stm32fun\f767zi_led_blink\Core\Inc\main.h_save
+2025-05-04 19:54:40,021 [INFO] CodeEngine:287 - Generated code: D:\Projects\stm32fun\f767zi_led_blink\Core\Inc\main.h
+2025-05-04 19:54:40,027 [INFO] CodeEngine:263 - oldGeneratedFile, D:\Projects\stm32fun\f767zi_led_blink\Core\Src\main.c_save
+2025-05-04 19:54:40,180 [INFO] CodeEngine:287 - Generated code: D:\Projects\stm32fun\f767zi_led_blink\Core\Src\main.c
+2025-05-04 19:54:40,673 [INFO] ProjectBuilder:3324 - Time for Copy HAL[1] : 148mS.
+2025-05-04 19:54:40,677 [INFO] ProjectBuilder:4912 - Project Generator version: 4.6.0.1-B1
+2025-05-04 19:54:40,806 [INFO] ConfigFileManager:1590 - The Die is : DIE451
+2025-05-04 19:54:42,127 [INFO] ProjectBuilder:5191 - Time for Generating toolchain IDE Files: 1450mS.
+2025-05-04 19:54:42,127 [INFO] ProjectBuilder:3181 - Time for Copy CMSIS : 0mS.
+2025-05-04 19:54:42,129 [INFO] ProjectBuilder:3181 - Time for Copy CMSIS : 0mS.

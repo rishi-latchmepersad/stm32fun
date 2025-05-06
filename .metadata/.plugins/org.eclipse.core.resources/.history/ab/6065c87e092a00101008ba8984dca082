@@ -1,0 +1,26 @@
+/*
+ * main.c
+ *
+ *  Created on: May 4, 2025
+ *      Author: rishi_latchmepersad
+ */
+
+
+#include "stm32f7xx_hal.h"
+
+int main(void){
+	// run an infinite loop
+	while(1){
+		// let's use led 2, which is connected to PB7
+		// and use the user pushbutton b1, connected to pc13
+	}
+}
+
+void GPIO_Config(void){
+	// enable the clock to bring the GPIO B connectors up from its low power default state
+	__HAL_RCC_GPIOB_CLK_ENABLE();
+	// initialize a struct to hold all the values for our GPIO device
+	GPIO_InitTypeDef GPIOB_Init= {};
+	// set the pin to 7, since that's where our LED2 is connected
+	GPIOB_Init.Pin = GPIO_PIN_7;
+}

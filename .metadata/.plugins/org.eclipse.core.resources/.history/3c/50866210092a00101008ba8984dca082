@@ -1,0 +1,22 @@
+/*
+ * main.c
+ *
+ *  Created on: May 4, 2025
+ *      Author: rishi_latchmepersad
+ */
+
+
+#include "stm32f7xx_hal.h"
+
+int main(void){
+	// run an infinite loop
+	while(1){
+		// let's use led 2, which is connected to PB7
+		// and use the user pushbutton b1, connected to pc13
+	}
+}
+
+void GPIO_Config(void){
+	// enable the clock to bring the GPIO up from its low power default state
+	__HAL_RCC_GPIOA_CLK_ENABLE();
+}
