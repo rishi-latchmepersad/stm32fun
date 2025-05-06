@@ -1,0 +1,18 @@
+/*
+ * main.h
+ *
+ *  Created on: May 4, 2025
+ *      Author: rishi_latchmepersad
+ */
+
+#ifndef INC_MAIN_H_
+#define INC_MAIN_H_
+
+#include "stm32f7xx_hal.h"
+
+
+//Function Prototypes
+void GPIO_Config(void);
+void delay(uint32_t delayVal);
+
+#endif /* INC_MAIN_H_ */

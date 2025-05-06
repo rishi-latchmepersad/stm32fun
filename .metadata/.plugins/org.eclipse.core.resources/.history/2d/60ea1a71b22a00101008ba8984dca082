@@ -1,0 +1,70 @@
+/*
+ * main.c
+ *
+ *  Created on: May 6, 2025
+ *      Author: rishi_latchmepersad
+ */
+
+#include "main.h"
+#include "stdbool.h"
+
+
+int main(void){
+	// set up the GPIO B pins
+	GPIOB_Config();
+	// set up the GPIO C pins
+	GPIOC_Config();
+	// create a variable to store the state of the button press
+	bool led_on = false;
+	// run an infinite loop
+	while(1){
+		// let's use led 2, which is connected to PB7
+		// and use the user pushbutton b1, connected to pc13
+		if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_13) == 0){
+			// toggle the led
+			HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_7);
+			//delay the led to allow for a 'blink'
+			delay(500000);
+		}
+		else{
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET);
+		}
+	}
+}
+
+// GPIOB configuration for LED 2
+void GPIOB_Config(void){
+	// enable the clock to bring the GPIO B connectors up from their low power default state
+	__HAL_RCC_GPIOB_CLK_ENABLE();
+	// initialize a struct to hold all the values for our GPIO device
+	GPIO_InitTypeDef GPIOB_Init= {};
+	// set the pin to 7, since that's where our LED2 is connected
+	GPIOB_Init.Pin = GPIO_PIN_7;
+	// set the pin to the output push-pull mode
+	GPIOB_Init.Mode = GPIO_MODE_OUTPUT_PP;
+	// call the initialization function with this struct for GPIO B
+	HAL_GPIO_Init(GPIOB, &GPIOB_Init);
+}
+
+// GPIOB configuration for B1
+void GPIOC_Config(void){
+	// enable the clock to bring the GPIO C connectors up from their low power default state
+	__HAL_RCC_GPIOC_CLK_ENABLE();
+	// initialize a struct to hold all the values for our GPIO device
+	GPIO_InitTypeDef GPIOC_Init= {};
+	// set the pin to 13, since that's where our user button B1 is connected
+	GPIOC_Init.Pin = GPIO_PIN_13;
+	// set the pin to the input mode
+	GPIOC_Init.Mode = GPIO_MODE_INPUT;
+	// the button already has the hardware for pull up, so we need no pull in software
+	GPIOC_Init.Pull = GPIO_NOPULL;
+	// call the initialization function with this struct for GPIO C
+	HAL_GPIO_Init(GPIOC, &GPIOC_Init);
+}
+
+
+void delay(uint32_t delayVal){
+	for(uint32_t i=0;i<delayVal;i++){
+
+	}
+}
