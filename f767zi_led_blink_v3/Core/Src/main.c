@@ -22,6 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
+#include <stdbool.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,6 +45,11 @@
 UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
+uint8_t btn_pressed=0;
+uint16_t blink_delays[]={
+		500,250,100
+};
+uint8_t blink_delay=0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -57,18 +63,28 @@ static void MX_USART3_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-// Send printf to uart1
-int _write(int fd, char* ptr, int len) {
-  HAL_StatusTypeDef hstatus;
 
-  if (fd == 1 || fd == 2) {
-    hstatus = HAL_UART_Transmit(&huart3, (uint8_t *) ptr, len, HAL_MAX_DELAY);
-    if (hstatus == HAL_OK)
-      return len;
-    else
-      return -1;
-  }
-  return -1;
+// redirect printf to uart3
+// fd == file descriptor. 1 = stdout, 2 stderr
+// ptr == pointer to the data being sent
+// len == length of the data (in bytes)
+int _write(int fd, char* ptr, int len) {
+ HAL_StatusTypeDef hstatus;
+
+ if (fd == 1 || fd == 2) {
+   hstatus = HAL_UART_Transmit(&huart3, (uint8_t *) ptr, len, HAL_MAX_DELAY);
+   if (hstatus == HAL_OK)
+     return len;
+   else
+     return -1;
+ }
+ return -1;
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+	if (GPIO_Pin == BTN1_Pin){
+		btn_pressed = 1;
+	}
 }
 /* USER CODE END 0 */
 
@@ -80,7 +96,6 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
   /* USER CODE END 1 */
 
   /* MPU Configuration--------------------------------------------------------*/
@@ -111,7 +126,7 @@ int main(void)
   } else {
       printf("HSE not detected - using HSI\r\n");  // You'll likely see this
   }
-  uint32_t now = 0,last_blink=0,last_tick=0;
+  uint32_t now = 0,last_blink=0,last_tick=0,loop_count = 0;
   printf("Blink V3 starting\r\n");
   /* USER CODE END 2 */
 
@@ -120,15 +135,26 @@ int main(void)
   while (1)
   {
 	  now = HAL_GetTick();
-	  if (now - last_blink >= 500){
+	  if (now - last_blink >= blink_delays[blink_delay]){
 		  printf("Toggling the LED!\r\n");
 		  HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);
 		  last_blink = now;
 	  }
 	  if ((now-last_tick) >=1000){
-		  printf("Tick %lu \r\n",last_tick);
+		  printf("Tick %lu (loop count = %lu)\r\n",now/1000,loop_count);
+		  loop_count = 0;
 		  last_tick=now;
 	  }
+	  if (btn_pressed == 1){
+		  printf("Button pressed!\r\n");
+		  blink_delay++;
+		  uint8_t array_len = sizeof(blink_delays)/sizeof(blink_delays[0]);
+		  if(blink_delay>=array_len){
+			  blink_delay=0;
+		  }
+		  btn_pressed=0;
+	  }
+	  ++loop_count;
   }
     /* USER CODE END WHILE */
 
@@ -231,6 +257,7 @@ static void MX_GPIO_Init(void)
   /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOH_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
@@ -239,12 +266,22 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, GPIO_PIN_RESET);
 
+  /*Configure GPIO pin : BTN1_Pin */
+  GPIO_InitStruct.Pin = BTN1_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(BTN1_GPIO_Port, &GPIO_InitStruct);
+
   /*Configure GPIO pin : LED1_Pin */
   GPIO_InitStruct.Pin = LED1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LED1_GPIO_Port, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
