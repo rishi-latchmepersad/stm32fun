@@ -143,7 +143,7 @@ int main(void)
 		  __HAL_TIM_SET_COMPARE(&htim4,TIM_CHANNEL_1,pwm_value);
 		  __HAL_TIM_SET_COMPARE(&htim4,TIM_CHANNEL_2,1000-pwm_value);
 		  __HAL_TIM_SET_COMPARE(&htim4,TIM_CHANNEL_3,pwm_value);
-		  __HAL_TIM_SET_COMPARE(&htim4,TIM_CHANNEL_4,1000);
+		  __HAL_TIM_SET_COMPARE(&htim4,TIM_CHANNEL_4,1000-pwm_value);
 		  pwm_value += pwm_change;
 		  if (pwm_value==0) pwm_change =1;
 		  if (pwm_value==1000) pwm_change =-1;
