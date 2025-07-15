@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := f767zi_dac1
+BUILD_ARTIFACT_NAME := f767zi_pwm_sine_wave
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-f767zi_dac1.elf \
+f767zi_pwm_sine_wave.elf \
 
 MAP_FILES += \
-f767zi_dac1.map \
+f767zi_pwm_sine_wave.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-f767zi_dac1.list \
+f767zi_pwm_sine_wave.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: f767zi_dac1.elf secondary-outputs
+main-build: f767zi_pwm_sine_wave.elf secondary-outputs
 
 # Tool invocations
-f767zi_dac1.elf f767zi_dac1.map: $(OBJS) $(USER_OBJS) D:\Projects\stm32fun\f767zi_dac1\STM32F767ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "f767zi_dac1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"D:\Projects\stm32fun\f767zi_dac1\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="f767zi_dac1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+f767zi_pwm_sine_wave.elf f767zi_pwm_sine_wave.map: $(OBJS) $(USER_OBJS) D:\Projects\stm32fun\f767zi_pwm_sine_wave\STM32F767ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "f767zi_pwm_sine_wave.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m7 -T"D:\Projects\stm32fun\f767zi_pwm_sine_wave\STM32F767ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="f767zi_pwm_sine_wave.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv5-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,14 +70,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-f767zi_dac1.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "f767zi_dac1.list"
+f767zi_pwm_sine_wave.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "f767zi_pwm_sine_wave.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) default.size.stdout f767zi_dac1.elf f767zi_dac1.list f767zi_dac1.map
+	-$(RM) default.size.stdout f767zi_pwm_sine_wave.elf f767zi_pwm_sine_wave.list f767zi_pwm_sine_wave.map
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

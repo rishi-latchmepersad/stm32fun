@@ -124,6 +124,7 @@ int main(void){
  800026a:	71fb      	strb	r3, [r7, #7]
  800026c:	e009      	b.n	8000282 <main+0x4a>
 		}
+		// else if the button is being pressed
 		else if(HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_13) == 1){
  800026e:	f44f 5100 	mov.w	r1, #8192	@ 0x2000
  8000272:	4804      	ldr	r0, [pc, #16]	@ (8000284 <main+0x4c>)
