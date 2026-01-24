@@ -1,2 +1,2 @@
-# stm32fun
-A fun project that I use to learn on my STM32 Nucleo-F767ZI board
+# STM32 Fun
+A fun project that I used to learn the basics on my STM32 Nucleo-F767ZI board. I followed tutorials from Lars at STM#2 World: https://www.youtube.com/@stm32world
